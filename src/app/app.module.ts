@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeModule } from './pages/home/home.module';
 import { CommonsModule } from './commons/commons.module';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { CommonsModule } from './commons/commons.module';
     CoreModule.forRoot(),
     FormsModule,
     HttpModule,
-    HomeModule,
     CommonsModule
   ],
   providers: [],

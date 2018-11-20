@@ -24,7 +24,7 @@ $(function(){
    };
 
 	// Main Menu Superfish
-   var mainMenu = function() {
+   $.mainMenu = function() {
 
       $('#fh5co-primary-menu').superfish({
          delay: 0,
@@ -39,7 +39,7 @@ $(function(){
    };
 
    // Offcanvas and cloning of the main menu
-   var offcanvas = function() {
+   $.offcanvas = function() {
 
       var $clone = $('#fh5co-menu-wrap').clone();
       $clone.attr({
@@ -80,13 +80,13 @@ $(function(){
             }
          }
 
-      });   
+      });
 
    }
-   
+
 
    // Click outside of the Mobile Menu
-   var mobileMenuOutsideClick = function() {
+   $.mobileMenuOutsideClick = function() {
       $(document).click(function (e) {
        var container = $("#offcanvas-menu, .js-fh5co-nav-toggle");
        if (!container.is(e.target) && container.has(e.target).length === 0) {
@@ -97,7 +97,7 @@ $(function(){
       });
    };
 
-   var counter = function() {
+   $.counter = function() {
       $('.js-counter').countTo({
          formatter: function (value, options) {
          return value.toFixed(options.decimals);
@@ -105,12 +105,12 @@ $(function(){
       });
    };
 
-   var contentWayPoint = function() {
+   $.contentWayPoint = function() {
       var i = 0;
       $('.animate-box').waypoint( function( direction ) {
 
          if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-            
+
             i++;
 
             $(this.element).addClass('item-animate');
@@ -123,16 +123,16 @@ $(function(){
                      el.removeClass('item-animate');
                   },  k * 200, 'easeInOutExpo' );
                });
-               
+
             }, 100);
-            
+
          }
 
       } , { offset: '85%' } );
    };
 
 
-   var fullHeight = function() {
+   $.fullHeight = function() {
 
       if ( !isMobile.any() ) {
          $('.js-fullheight').css('height', $(window).height() - $('#fh5co-header').height());
@@ -148,15 +148,15 @@ $(function(){
 
    $('#date-start, #date-end').datepicker();
 
-   [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {  
+   [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
       new SelectFx(el);
    } );
 
 
-   
+
    // Tabs
 
-   var tabs = function() {
+   $.tabs = function() {
       $('#hotel-facilities').css('height', $('.tab-content.active').height() + 600);
 
       $(window).resize(function(){
@@ -164,14 +164,14 @@ $(function(){
       });
 
       $('.tabs-nav > a').on('click', function(e){
-         
+
          var tab = $(this).data('tab');
 
          $('.tabs-nav > a').removeClass('active');
          $(this).addClass('active');
 
          $('.tab-content').removeClass('active show');
-         
+
          setTimeout(function(){
             $('.tab-content[data-tab-content="'+tab+'"]').addClass('active');
             $('#hotel-facilities').css('height', $('.tab-content.active').height() + 600);
@@ -179,14 +179,14 @@ $(function(){
          setTimeout(function(){
             $('.tab-content[data-tab-content="'+tab+'"]').addClass('show');
          }, 400);
-         
+
 
          e.preventDefault();
       });
    };
 
-   var sliderMain = function() {
-      
+   $.sliderMain = function() {
+
       $('#fh5co-hero .flexslider').flexslider({
          animation: "fade",
          slideshowSpeed: 5000,
@@ -206,31 +206,30 @@ $(function(){
 
       });
 
-      $('#fh5co-hero .flexslider .slides > li').css('height', $(window).height());  
+      $('#fh5co-hero .flexslider .slides > li').css('height', $(window).height());
       $(window).resize(function(){
-         $('#fh5co-hero .flexslider .slides > li').css('height', $(window).height());  
+         $('#fh5co-hero .flexslider .slides > li').css('height', $(window).height());
       });
 
    };
 
    // Parallax
-   var parallax = function() {
+   $.parallax = function() {
       $(window).stellar();
    };
 
 
-   $(function(){
-      sliderMain();
-      tabs();
-      mainMenu();
-      offcanvas();
-      contentWayPoint();
-      mobileMenuOutsideClick();
-      parallax();
-      fullHeight();
-      counter();
-   });
+  //  $(function(){
+  //     $.sliderMain();
+  //     $.tabs();
+  //     $.mainMenu();
+  //     $.offcanvas();
+  //     $.contentWayPoint();
+  //     $.mobileMenuOutsideClick();
+  //     $.parallax();
+  //     $.fullHeight();
+  //     $.counter();
+  //  });
 
 });
-	
-	
+

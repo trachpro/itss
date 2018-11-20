@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -12,4 +13,16 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit() {
+    $.sliderMain();
+    $.tabs();
+    $.mainMenu();
+    $.offcanvas();
+    $.contentWayPoint();
+    $.mobileMenuOutsideClick();
+    $.parallax();
+    $.fullHeight();
+    $.counter();
+    $('#date-start, #date-end').datepicker();
+  }
 }

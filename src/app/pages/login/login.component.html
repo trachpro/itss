@@ -1,0 +1,51 @@
+<body>
+  <h1 class="title-agile text-center"></h1>
+
+  <div class="content-w3ls">
+      <div class="content-top-agile">
+          <h2>sign in</h2>
+      </div>
+      <div class="content-bottom">
+
+          <form action="#" method="post">
+              <div class="err-msg">
+                  {{message}}
+              </div>
+              <div class="field-group">
+                  <span class="fa fa-user" aria-hidden="true"></span>
+                  <div class="wthree-field">
+                      <input [(ngModel)]="username" name="text1" id="text1" type="text" value="" placeholder="Username" required>
+                  </div>
+              </div>
+              <div class="field-group">
+                  <span class="fa fa-lock" aria-hidden="true"></span>
+                  <div class="wthree-field">
+                      <input [(ngModel)]="password" name="password" id="password" type="Password" placeholder="Password" required>
+                  </div>
+              </div>
+              <small><a routerLink="forgetpassword" style="font-size: 14px;" >Forgot your password?</a></small>
+              <ul class="list-login">
+                  <li class="switch-agileits">
+                      <label class="switch">
+                          <input type="checkbox" [(ngModel)]="isRemember" name="remember">
+                          <span class="slider round"></span>
+                          <p class="slider-word">keep me signed in</p>
+                      </label>
+                  </li>
+                  <!-- <li>
+                          class="text-right"
+                      <a routerLink="forgetpassword" style="color: navy;" >Forget your password</a>
+                  </li> -->
+                  <li>
+                      <a routerLink="register" style="color: navy;" class="text-right">Create New Account</a>
+                  </li>
+                  <li class="clearfix"></li>
+              </ul>
+              <div class="wthree-field">
+                  <input (click)="submit()" id="saveForm" name="saveForm" type="submit" value="sign in" />
+              </div>
+          </form>
+      </div>
+  </div>
+
+</body>

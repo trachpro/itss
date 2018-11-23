@@ -1,38 +1,32 @@
-<div id="fh5co-header">
-  <header id="fh5co-header-section">
-    <div class="container">
-      <div class="nav-header">
-        <a class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-        <h1 id="fh5co-logo"><a  [routerLink]="['/home']" >Luxe</a></h1>
-        <nav id="fh5co-menu-wrap" role="navigation">
-          <ul class="sf-menu" id="fh5co-primary-menu">
-            <li><a [ngClass]="activeString.includes('/home')?'active': ''" [routerLink]="['/home']" >Home</a></li>
-            <li>
-              <a  [routerLink]="['/hotel']" [ngClass]="activeString.includes('/hotel')?'active': ''"  class="fh5co-sub-ddown">Hotel</a>
-              <ul class="fh5co-sub-menu">
-                <li><a>Luxe Hotel</a></li>
-                <li><a>Deluxe Hotel</a></li>
-                <li>
-                  <a class="fh5co-sub-ddown">King Hotel</a>
-                  <ul class="fh5co-sub-menu">
-                    <li><a>Build</a></li>
-                    <li><a>Work</a></li>
-                    <li><a>Light</a></li>
-                    <li><a>Relic</a></li>
-                    <li><a>Display</a></li>
-                    <li><a>Sprint</a></li>
-                  </ul>
-                </li>
-                <li><a>Five Star Hotel</a></li>
-              </ul>
-            </li>
-            <li><a [routerLink]="['/services']" [ngClass]="activeString.includes('/services')?'active': ''" >Services</a></li>
-            <li><a [routerLink]="['/blog']" [ngClass]="activeString.includes('/blog')?'active': ''">Blog</a></li>
-            <li><a [routerLink]="['/contact']" [ngClass]="activeString.includes('/contact')?'active': ''">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
+<nav *ngIf="!activeString.includes('/login')" class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+  id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Cozy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
 
-</div>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Rooms</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown04">
+            <a class="dropdown-item" href="room.html">Rooms</a>
+            <a class="dropdown-item" href="room.html">Superior Room Twin</a>
+            <a class="dropdown-item" href="room.html">Premier Suite</a>
+            <a class="dropdown-item" href="room.html">Family Room</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="dining-bar.html" class="nav-link">Dining &amp; Bar</a></li>
+        <li class="nav-item"><a href="amenities.html" class="nav-link">Amenities</a></li>
+        <li class="nav-item"><a href="reservation.html" class="nav-link">Booking</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

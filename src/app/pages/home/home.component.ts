@@ -14,15 +14,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    $.sliderMain();
-    $.tabs();
-    $.mainMenu();
-    $.offcanvas();
-    $.contentWayPoint();
+    $.loader();
+    $.carousel();
+    $.scrollWindow();
     $.mobileMenuOutsideClick();
-    $.parallax();
-    $.fullHeight();
+    $.offcanvasMenu();
+    $.burgerMenu();
     $.counter();
-    $('#date-start, #date-end').datepicker();
+    $.contentWayPoint();
+    $.OnePageNav();
   }
 }

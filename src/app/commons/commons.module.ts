@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { SliderComponent } from './components/slider/slider.component';
+import { InstagramComponent } from './components/instagram/instagram.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    SliderComponent,
+    InstagramComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +19,9 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    SliderComponent,
+    InstagramComponent
   ]
 })
 export class CommonsModule { }

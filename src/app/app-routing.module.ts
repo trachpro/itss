@@ -15,17 +15,20 @@ const routes: Routes = [
     loadChildren: './pages/login/login.module#LoginModule'
   },
    {
-    path: 'blog',
-    loadChildren: './pages/blog/blog.module#BlogModule'
+    path: 'rooms',
+    loadChildren: './pages/rooms/rooms.module#RoomsModule'
   }, {
     path: 'contact',
     loadChildren: './pages/contact/contact.module#ContactModule'
   }, {
-    path: 'hotel',
-    loadChildren: './pages/hotel/hotel.module#HotelModule'
+    path: 'booking',
+    loadChildren: './pages/booking/booking.module#BookingModule'
   }, {
     path: 'services',
     loadChildren: './pages/services/services.module#ServicesModule'
+  }, {
+    path: 'about',
+    loadChildren: './pages/blog/blog.module#BlogModule'
   }
 ];
 

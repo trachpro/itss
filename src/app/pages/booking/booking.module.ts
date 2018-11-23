@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContactComponent } from './contact.component';
+import { BookingComponent } from './booking.component';
 import { RouterModule } from '@angular/router';
-import { ContactRoutes } from './contact.routes';
+import { BookingRoutes } from './booking.routes';
 import { CommonsModule } from '../../commons/commons.module';
 
 @NgModule({
-  declarations: [ContactComponent],
+  declarations: [BookingComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(ContactRoutes),
+    RouterModule.forChild(BookingRoutes),
     CommonsModule
   ]
 })
-export class ContactModule { }
+export class BookingModule { }

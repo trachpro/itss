@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 declare var $: any;
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.css']
+  selector: 'app-booking',
+  templateUrl: './booking.component.html',
+  styleUrls: ['./booking.component.css']
 })
-export class BlogComponent implements OnInit {
+export class BookingComponent implements OnInit {
 
   constructor() { }
 

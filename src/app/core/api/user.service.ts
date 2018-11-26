@@ -14,18 +14,18 @@ export class UserService {
 
   post(params): Observable<any> {
 
-    return this.mainApi.post('user', params);
+    return this.mainApi.post('api/users', params);
   }
 
   get(id): Observable<any> {
 
-    return this.mainApi.get('user/' + id + '?token=' + this.storageService.get('token'));
+    return this.mainApi.get('api/users/' + id + '?token=' + this.storageService.get('token'));
   }
 
   update(params): Observable<any> {
 
     params.token = this.storageService.get('token');
 
-    return this.mainApi.put('user', params);
+    return this.mainApi.put('api/users', params);
   }
 }

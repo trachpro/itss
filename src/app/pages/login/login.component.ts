@@ -14,7 +14,7 @@ import { StorageService } from '../../core/util/storage.service';
 })
 export class LoginComponent implements OnInit {
 
-  private username: String;
+  private email: String;
   private password: String;
   private isRemember: Boolean;
   private message: String;
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
     if(this.isRemember) {
 
-      this.username = this.storageService.get('username');
+      this.email = this.storageService.get('email');
       this.password = this.storageService.get('password');
     }
 
@@ -49,15 +49,16 @@ export class LoginComponent implements OnInit {
     this.save();
 
     this.loadingService.show();
-    this.loginService.login({username: this.username,password: this.password}).subscribe( data => {
+    this.loginService.login({email: this.email,password: this.password}).subscribe( data => {
 
       console.log("data: ", data);
-      this.storageService.set('token',data.token);
-      this.storageService.set('id', data.ID);
-      this.storageService.set('username', data.name);
-      this.storageService.set('profilePicture', data.profilePicture);
+      this.storageService.set('accessToken',data.accessToken);
+      this.storageService.set('id', data.id);
+      this.storageService.set('name', data.name);
+      this.storageService.set('role', data.role);
+      this.storageService.set('email', data.email);
 
-      this.router.navigate([this.returnUrl? this.returnUrl: '/main/']);
+      this.router.navigate([this.returnUrl? this.returnUrl: '/home']);
 
       this.loadingService.hide();
     }, error => {
@@ -71,11 +72,11 @@ export class LoginComponent implements OnInit {
     if(this.isRemember) {
 
       this.storageService.set("isRemember", true);
-      this.storageService.set("username", this.username);
+      this.storageService.set("email", this.email);
       this.storageService.set("password", this.password);
     } else {
       this.storageService.set("isRemember", false);
-      this.storageService.set("username", '');
+      this.storageService.set("email", '');
       this.storageService.set("password", '');
     }
   }

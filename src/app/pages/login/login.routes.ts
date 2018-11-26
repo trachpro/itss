@@ -7,6 +7,6 @@ export const LoginRoutes: Routes = [{
   path: '',
   component: LoginComponent
 }, {
-  path: '/register',
+  path: 'register',
   component: RegisterComponent
 }];

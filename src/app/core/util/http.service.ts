@@ -10,11 +10,12 @@ import {
 } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ConfigService } from './../config.service';
+import { StorageService } from './storage.service';
 
 @Injectable()
 export class HttpService {
 
-  constructor(private http: Http, private config: ConfigService) { }
+  constructor(private http: Http, private config: ConfigService, private storage: StorageService) { }
 
   /**
    * Performs any type of http request.
@@ -34,7 +35,7 @@ export class HttpService {
    */
   public get(url: string, params?: any, options?: RequestOptionsArgs): Observable<any> {
     let fullUrl: string = this.getFullUrl(url) + this.serializeData(params);
-    return this.http.get(fullUrl);
+    return this.http.get(fullUrl, this.requestOptions(options));
   }
 
   /**
@@ -134,7 +135,8 @@ export class HttpService {
     }
     if (options.headers == null) {
       options.headers = new Headers({
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+        'Authorization': this.storage.get('accessToken')
       });
     }
     return options;

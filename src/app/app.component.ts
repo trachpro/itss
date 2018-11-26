@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingService } from './core/util/loading.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private loadingService: LoadingService) {
 
+    setTimeout(this.loadingService.hide, 500);
     this.router.events.subscribe(val => {
 
       // console.log("val: ", this.router.url);

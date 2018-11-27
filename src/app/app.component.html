@@ -1,4 +1,4 @@
-<app-navbar *ngIf="router.url" [activeString]="router.url" ></app-navbar>
+<app-navbar *ngIf="router.url" [isLog]="isLog" [activeString]="router.url" ></app-navbar>
 <router-outlet></router-outlet>
 <app-footer *ngIf="router.url && !router.url.includes('/login')"></app-footer>
 

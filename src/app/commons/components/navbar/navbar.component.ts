@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { StorageService } from '../../../core/util/storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
 @Input() activeString: any;
+@Input() isLog: boolean;
 
-  constructor() { }
+  constructor(private storage: StorageService) { }
 
   ngOnInit() {
   }
 
+  clearStorage() {
+    console.log("clear storage")
+    this.storage.removeItem("accessToken");
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare let $: any;
 
 @Component({
   selector: 'app-slider',
@@ -10,6 +11,7 @@ export class SliderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $.initPopupVimeo();
   }
 
 }

@@ -9,6 +9,7 @@ import { CategoryService } from './category.service';
 import { ImageService } from './image.service';
 import { DialogModule } from '../dialog/dialog.module';
 import { CommentService } from './comment.service';
+import { RoomsService } from './rooms.service';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { CommentService } from './comment.service';
     CategoryService,
     ImageService,
     DialogModule,
-    CommentService
+    CommentService,
+    RoomsService
   ]
 })
 export class ApiModule {}

@@ -23,5 +23,6 @@ export class HomeComponent implements OnInit {
     $.counter();
     $.contentWayPoint();
     $.OnePageNav();
+    $.initDatepicker();
   }
 }

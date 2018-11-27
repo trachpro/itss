@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare let $: any;
 
 @Component({
   selector: 'app-instagram',
@@ -12,4 +13,7 @@ export class InstagramComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit() {
+    $.initImagePopup();
+  }
 }

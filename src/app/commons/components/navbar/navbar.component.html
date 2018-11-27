@@ -9,21 +9,12 @@
 
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active"><a routerLink="/home" class="nav-link">Home</a></li>
-        <li class="nav-item"><a routerLink="/about" class="nav-link">About</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" routerLink="/rooms" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Rooms</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown04">
-            <a class="dropdown-item" routerLink="/rooms">Rooms</a>
-            <a class="dropdown-item" routerLink="/rooms">Superior Room Twin</a>
-            <a class="dropdown-item" routerLink="/rooms">Premier Suite</a>
-            <a class="dropdown-item" routerLink="/rooms">Family Room</a>
-          </div>
-        </li>
-        <li class="nav-item"><a routerLink="/services" class="nav-link">Amenities</a></li>
-        <li class="nav-item"><a routerLink="/booking" class="nav-link">Booking</a></li>
-        <li class="nav-item"><a routerLink="/contact" class="nav-link">Contact</a></li>
+        <li [ngClass]="activeString.includes('/home')? 'nav-item active': 'nav-item'"><a routerLink="/home" class="nav-link">Home</a></li>
+        <li [ngClass]="activeString.includes('/about')? 'nav-item active': 'nav-item'"><a routerLink="/about" class="nav-link">About</a></li>
+        <li [ngClass]="activeString.includes('/rooms')? 'nav-item active': 'nav-item'"><a class="nav-link" routerLink="/rooms" >Rooms</a></li>
+        <!-- <li [ngClass]="activeString.includes('/services')? 'nav-item active': 'nav-item'"><a routerLink="/services" class="nav-link">Amenities</a></li> -->
+        <li [ngClass]="activeString.includes('/booking')? 'nav-item active': 'nav-item'"><a routerLink="/booking" class="nav-link">Booking</a></li>
+        <li [ngClass]="activeString.includes('/contact')? 'nav-item active': 'nav-item'"><a routerLink="/contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </div>

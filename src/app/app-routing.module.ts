@@ -29,6 +29,9 @@ const routes: Routes = [
   }, {
     path: 'about',
     loadChildren: './pages/blog/blog.module#BlogModule'
+  }, {
+    path: 'profile',
+    loadChildren: './pages/profile/profile.module#ProfileModule'
   }
 ];
 

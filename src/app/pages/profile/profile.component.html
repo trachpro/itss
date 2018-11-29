@@ -1,114 +1,20 @@
 <app-slider></app-slider>
 
-<!-- DataTables Example -->
-<div class="card mb-3">
-  <!-- <div class="card-header">
-    <i class="fas fa-table"></i>
-    Data Table Example</div> -->
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Email</th>
-            <th>Name</th>
-            <th>Booking From</th>
-            <th>Booking To</th>
-            <th>Check-in</th>
-            <th>Check-out</th>
-            <th>Status</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          <tr>
-            <td>BKV7Q3KLX</td>
-            <td>phuy@gmail.com</td>
-            <td>Pham Quang Huy</td>
-            <td>2018-10-29</td>
-            <td>2018-11-01</td>
-            <td>2018-10-29 18:29</td>
-            <td>2018-11-01 18:29</td>
-            <td>FINISHED</td>
-            <td>4500000</td>
-          </tr>
-
-          <tr>
-            <td>BKV7Q3KLX</td>
-            <td>phuy@gmail.com</td>
-            <td>Pham Quang Huy</td>
-            <td>2018-10-29</td>
-            <td>2018-11-01</td>
-            <td>2018-10-29 18:29</td>
-            <td>2018-11-01 18:29</td>
-            <td>FINISHED</td>
-            <td>4500000</td>
-          </tr>
-
-          <tr>
-            <td>BKV7Q3KLX</td>
-            <td>phuy@gmail.com</td>
-            <td>Pham Quang Huy</td>
-            <td>2018-10-29</td>
-            <td>2018-11-01</td>
-            <td>2018-10-29 18:29</td>
-            <td>2018-11-01 18:29</td>
-            <td>FINISHED</td>
-            <td>4500000</td>
-          </tr>
-
-          <tr>
-            <td>BKV7Q3KLX</td>
-            <td>phuy@gmail.com</td>
-            <td>Pham Quang Huy</td>
-            <td>2018-10-29</td>
-            <td>2018-11-01</td>
-            <td>2018-10-29 18:29</td>
-            <td>2018-11-01 18:29</td>
-            <td>FINISHED</td>
-            <td>4500000</td>
-          </tr>
-
-          <tr>
-            <td>BKV7Q3KLX</td>
-            <td>phuy@gmail.com</td>
-            <td>Pham Quang Huy</td>
-            <td>2018-10-29</td>
-            <td>2018-11-01</td>
-            <td>2018-10-29 18:29</td>
-            <td>2018-11-01 18:29</td>
-            <td>FINISHED</td>
-            <td>4500000</td>
-          </tr>
-
-          <tr>
-            <td>BKV7Q3KLX</td>
-            <td>phuy@gmail.com</td>
-            <td>Pham Quang Huy</td>
-            <td>2018-10-29</td>
-            <td>2018-11-01</td>
-            <td>2018-10-29 18:29</td>
-            <td>2018-11-01 18:29</td>
-            <td>FINISHED</td>
-            <td>4500000</td>
-          </tr>
+<div class="container wrapper" >
+  <div class="menu">
+      <ul id="nav-navi" class="nav nav-tabs tabs-left">
+          <li class="nav-item"  [ngClass]="type == 1? 'btn-primary': 'btn-default'" (click)="type = 1" >
+            <a class="nav-link nav-tab">History</a>
+          </li>
           
-          
-        </tbody>
-      </table>
-
-      <nav aria-label="Page navigation example" class="pull-right">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link">Previous</a></li>
-          <li class="page-item"><a class="page-link">1</a></li>
-          <li class="page-item"><a class="page-link">2</a></li>
-          <li class="page-item"><a class="page-link">3</a></li>
-          <li class="page-item"><a class="page-link">Next</a></li>
+          <li class="nav-item" [ngClass]="type == 2? 'btn-primary': 'btn-default'" (click)="type = 2">
+            <a class="nav-link nav-tab">Password</a>
+          </li>
         </ul>
-      </nav>
-    </div>
   </div>
-  
+  <div class="content">
+      <app-history *ngIf="type==1" ></app-history>
+      <app-password *ngIf="type==2" ></app-password>
+  </div>
+
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RoomModel } from './room.model';
+import { DialogService } from '../../../core/dialog/dialog.service';
 
 declare let $: any;
 
@@ -12,7 +13,9 @@ export class RoomComponent implements OnInit {
 
   @Input() isLast: boolean;
   @Input() room: RoomModel;
-  constructor() { }
+  constructor(
+    private dialog: DialogService
+  ) { }
 
   ngOnInit() {
     console.log("room: ", this.room);
@@ -25,4 +28,10 @@ export class RoomComponent implements OnInit {
     }
   }
 
+  showReservation() {
+
+    this.dialog.showReservation(this.room).subscribe((result) => {
+      console.log("close reservation: ", result);
+    })
+  }
 }

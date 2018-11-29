@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { RoomsRoutes } from './rooms.routes';
 import { CommonsModule } from '../../commons/commons.module';
 import { RoomComponent } from './room/room.component';
+import { BookComponent } from './book/book.component';
 
 @NgModule({
-  declarations: [RoomsComponent, RoomComponent],
+  declarations: [RoomsComponent, RoomComponent, BookComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(RoomsRoutes),

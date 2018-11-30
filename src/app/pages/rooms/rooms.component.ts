@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from '../../core/api/rooms.service';
 import { LoadingService } from '../../core/util/loading.service';
-import { RoomModel } from './room/room.model';
+import { RoomModel } from '../../models/room.model';
 declare var $: any;
 
 const rooms = [

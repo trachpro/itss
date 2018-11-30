@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RoomModel } from './room.model';
+import { RoomModel } from '../../../models/room.model';
 import { DialogService } from '../../../core/dialog/dialog.service';
 
 declare let $: any;

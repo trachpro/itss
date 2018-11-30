@@ -13,62 +13,27 @@ export class MainApiService {
   }
 
   public get(url: string, params?: any, options?: any): Observable<any> {
-  
-    return this.http.get(url, params, options).map(res => {
-
-      res = JSON.parse(res._body);
-      if (res.status !== false ) {
-
-        return res;
-      } else {
-
-        throw res;
-      }
-    })
+    return this.http.get(url, params, options).map(res => this.handleResponse(res))
   }
 
   public post(url: string, params: any, options?: any): Observable<any> {
-
-    return this.http.post(url, params, options).map(res => {
-
-      res = JSON.parse(res._body);
-      if (res.status !== false ) {
-
-        return res;
-      } else {
-
-        throw res;
-      }
-    });
+    return this.http.post(url, params, options).map(res => this.handleResponse(res));
   }
 
   public put(url: string, params: any, options?: any): Observable<any> {
-
-    return this.http.put(url, params, options).map(res => {
-
-      res = JSON.parse(res._body);
-      if (res.status) {
-
-        return res;
-      } else {
-
-        throw res;
-      }
-    })
+    return this.http.put(url, params, options).map(res => this.handleResponse(res))
   }
 
   public delete(url: string, params?: any, options?: any): Observable<any> {
+    return this.http.delete(url, options).map(res => this.handleResponse(res))
+  }
 
-    return this.http.delete(url, options).map(res => {
-
-      res = JSON.parse(res._body);
-      if (res.status) {
-
+  private handleResponse(response) {
+    let res = JSON.parse(response._body);
+      if (res.status !== false ) {
         return res;
       } else {
-
         throw res;
       }
-    })
   }
 }

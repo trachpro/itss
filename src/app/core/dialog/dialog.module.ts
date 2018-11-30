@@ -5,6 +5,7 @@ import { MatDialogModule } from '@angular/material';
 import { DialogService } from './dialog.service';
 import { ErrorComponent } from './error/error.component';
 import { SuccessComponent } from './success/success.component';
+import { BookComponent } from './book/book.component';
 
 @NgModule({
   imports: [
@@ -12,15 +13,17 @@ import { SuccessComponent } from './success/success.component';
     MatDialogModule
   ],
   declarations: [
-    ErrorComponent, 
-    SuccessComponent
+    ErrorComponent,
+    SuccessComponent,
+    BookComponent
   ],
   providers: [
     DialogService
   ],
   entryComponents: [
-    ErrorComponent, 
-    SuccessComponent
+    ErrorComponent,
+    SuccessComponent,
+    BookComponent
   ]
 })
 export class DialogModule { }

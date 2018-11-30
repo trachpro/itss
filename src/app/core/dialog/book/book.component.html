@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="room-wrap">
+        <a class="room-img" [ngStyle]="{'background-image': room.img}"></a>
+        <div class="text p-4">
+          <div class="d-flex">
+            <div class="one-third">
+              <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span
+                  class="icon-star"></span><span class="icon-star-half-full"></span></p>
+              <h3><a>{{room.name}}</a></h3>
+            </div>
+            <div class="one-forth text-center">
+              <p class="price">${{room.price}} <br><span>/night</span></p>
+            </div>
+          </div>
+          <p class="features">
+            <span class="d-block mb-2" *ngFor="let option of room.options"><i class="icon-check mr-2"></i> {{option}}</span>
+          </p>
+          <p><button class="btn btn-primary">Booking</button></p>
+          <p><button class="btn btn-primary" (click)="dialogRef.close()">cancel</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row d-flex">
+        <div class="col-md-12">
+          <form action="#">
+            <h2 class="mb-4">Contact Details</h2>
+            <div class="row mb-5">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="name">First Name</label>
+                  <input type="text" class="form-control" placeholder="First Name">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="name">Last Name</label>
+                  <input type="text" class="form-control" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input type="text" class="form-control" placeholder="Your Email">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Address</label>
+                  <input type="text" class="form-control" placeholder="Phone">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="">Phone</label>
+                  <input type="text" class="form-control" placeholder="Phone">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h2 class="mb-4">Guest Details</h2>
+              </div>
+              <div class="col-md-12">
+                <h3 class="h4">Superior Room - Twin - Best available</h3>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="check-in">Check in:</label>
+                  <input type="text" id="checkin_date" class="form-control" placeholder="M/D/YYYY">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="check-out">Check out:</label>
+                  <input type="text" id="checkout_date" class="form-control" placeholder="M/D/YYYY">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

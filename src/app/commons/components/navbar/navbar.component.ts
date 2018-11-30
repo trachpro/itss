@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
   }
 
   clearStorage() {
-    console.log("clear storage")
     this.storage.removeItem("accessToken");
   }
 }

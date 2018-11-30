@@ -12,6 +12,12 @@ export class RoomModel {
 
   beds: Beds;
 
+  options: Array<String> = [];
+
+  img: String;
+
+  name: String;
+
   constructor(params) {
     this._id = params._id;
     this.capacity = params.capacity;
@@ -19,6 +25,9 @@ export class RoomModel {
     this.type = params.type;
     this.status = params.status;
     this.beds = params.beds;
+    this.options = params.options;
+    this.img = 'url(' + params.img + ')';
+    this.name = params.name;
   }
 }
 

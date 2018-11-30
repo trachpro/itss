@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { ErrorComponent } from './error/error.component';
 import { SuccessComponent } from './success/success.component';
+import { BookComponent } from './book/book.component';
 
 @Injectable()
 export class DialogService {
@@ -24,5 +25,12 @@ export class DialogService {
     if(!data) data = '';
 
     return this.dialog.open(ErrorComponent, { data: data}).afterClosed();
+  }
+
+  showReservation(data?): Observable<any> {
+
+    if(!data) data = {};
+
+    return this.dialog.open(BookComponent, { data: data}).afterClosed();
   }
 }

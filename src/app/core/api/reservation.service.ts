@@ -16,7 +16,7 @@ export class ReservationService {
     }
 
     cancel(code: String): Observable<any> {
-        return this.mainApi.put(this.uri + "/cancel/" + code + "1", null);
+        return this.mainApi.put(this.uri + "/cancel/" + code, null);
     }
 
     // post(params): Observable<any> {

@@ -8,7 +8,7 @@ import { PostService } from './post.service';
 import { CategoryService } from './category.service';
 import { ImageService } from './image.service';
 import { DialogModule } from '../dialog/dialog.module';
-import { CommentService } from './comment.service';
+import { ReservationService } from './reservation.service';
 import { RoomsService } from './rooms.service';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { RoomsService } from './rooms.service';
     CategoryService,
     ImageService,
     DialogModule,
-    CommentService,
+    ReservationService,
     RoomsService
   ]
 })

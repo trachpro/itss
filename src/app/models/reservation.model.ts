@@ -25,4 +25,17 @@ export class ReservationModel {
     this.status = params.status;
     this.total = params.total;
   }
+
+  public getBookingFrom() {
+    return this.getFormattedDate(this.bookingFrom);
+  }
+
+  public getBookingTo() {
+    return this.getFormattedDate(this.bookingTo);
+  }
+
+  private getFormattedDate(datetime: Date) {
+    return datetime.getDate() + "-" + datetime.getMonth() + "-" + datetime.getFullYear();
+
+  }
 }

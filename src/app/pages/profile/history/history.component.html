@@ -22,45 +22,19 @@
         </thead>
         
         <tbody>
-          <tr>
-            <td>BKV7Q3KLX</td>
-            <td>phuy@gmail.com</td>
-            <td>Pham Quang Huy</td>
-            <td>2018-10-29</td>
-            <td>2018-11-01</td>
-            <td>2018-10-29 18:29</td>
-            <td>2018-11-01 18:29</td>
-            <td>FINISHED</td>
-            <td>4500000</td>
-            <td><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Cancel</button></td>
-          </tr>
 
-          <tr>
-            <td>BKV7Q3KLX</td>
-            <td>phuy@gmail.com</td>
-            <td>Pham Quang Huy</td>
-            <td>2018-10-29</td>
-            <td>2018-11-01</td>
-            <td>2018-10-29 18:29</td>
-            <td>2018-11-01 18:29</td>
-            <td>FINISHED</td>
-            <td>4500000</td>
-            <td></td>
+          <tr *ngFor="let reservation of listReservations" >
+            <td>{{reservation.code}}</td>
+            <td>{{reservation.customerEmail}}</td>
+            <td>{{reservation.customerName}}</td>
+            <td>{{reservation.getBookingFrom()}}</td>
+            <td>{{reservation.getBookingTo()}}</td>
+            <td>{{reservation.checkin}}</td>
+            <td>{{reservation.checkout}}</td>
+            <td>{{reservation.status}}</td>
+            <td>{{reservation.total}}</td>
+            <td><button class="btn btn-danger" *ngIf="reservation.status == 'BOOKING'" data-toggle="modal" data-target="#exampleModal" (click)="selectedBookingCode = reservation.code">Cancel</button></td>
           </tr>
-
-          <tr>
-            <td>BKV7Q3KLX</td>
-            <td>phuy@gmail.com</td>
-            <td>Pham Quang Huy</td>
-            <td>2018-10-29</td>
-            <td>2018-11-01</td>
-            <td>2018-10-29 18:29</td>
-            <td>2018-11-01 18:29</td>
-            <td>FINISHED</td>
-            <td>4500000</td>
-            <td></td>
-          </tr>
-          
           
         </tbody>
       </table>
@@ -83,10 +57,10 @@
     <div class="modal-content">
       
       <div class="modal-body">
-        Are you sure to cancel this reservation?
+        Are you sure you want to cancel this reservation?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" style="float: right;">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: right;" (click)="cancel()">Yes</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

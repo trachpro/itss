@@ -12,7 +12,7 @@ import { CommonsModule } from './commons/commons.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     // RouterModule.forRoot(AppRoutingModule),

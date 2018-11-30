@@ -1,0 +1,20 @@
+<app-slider></app-slider>
+
+<div class="container wrapper" >
+  <div class="menu">
+      <ul id="nav-navi" class="nav nav-tabs tabs-left">
+          <li class="nav-item"  [ngClass]="type == 1? 'btn-primary': 'btn-default'" (click)="type = 1" >
+            <a class="nav-link nav-tab">History</a>
+          </li>
+          
+          <li class="nav-item" [ngClass]="type == 2? 'btn-primary': 'btn-default'" (click)="type = 2">
+            <a class="nav-link nav-tab">Password</a>
+          </li>
+        </ul>
+  </div>
+  <div class="content">
+      <app-history *ngIf="type==1" ></app-history>
+      <app-password *ngIf="type==2" ></app-password>
+  </div>
+
+</div>

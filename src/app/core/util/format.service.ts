@@ -20,8 +20,8 @@ export class FormatService {
     let day: any = d.getDate();
     let month: any = this.monthNames[d.getMonth()];
     let year = d.getFullYear();
-   
-    return month + ' ' + day + ', ' + year; 
+
+    return month + ' ' + day + ', ' + year;
   };
 
   formatDateTime(time) {
@@ -34,9 +34,13 @@ export class FormatService {
     let hour = d.getHours();
     let Hour = ("0" + hour).slice(-2);
     let minute = d.getMinutes();
-    let Minute = ("0" + minute).slice(-2); 
+    let Minute = ("0" + minute).slice(-2);
     return month + ' ' + day + ', ' + year + ' at ' + Hour + ':' + Minute;
 
+  }
+
+  getApiDate(date: Date) {
+    return date.toLocaleDateString().replace('/','-').replace('/','-');
   }
 
   formatData(src, mainProp, level?) {
@@ -48,7 +52,7 @@ export class FormatService {
     for(let index = 0; index < src.length; index++) {
 
       let element = src[index];
-      
+
       let ob ={};
 
       let name = '';
@@ -63,7 +67,7 @@ export class FormatService {
 
           ob[arr[len-1]] = element[e];
 
-          arr.pop(); 
+          arr.pop();
           name = arr.join('.');
 
           delete element[e];
@@ -98,7 +102,7 @@ export class FormatService {
     let res: Array<Observable<any>>  = [];
 
     array.forEach(element => {
-      
+
       if(compareCallback(element)) {
 
         params[property] = element[property]

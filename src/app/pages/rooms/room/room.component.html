@@ -3,7 +3,8 @@
   <div class="text p-4">
     <div class="d-flex mb-1">
       <div class="one-third">
-        <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star-half-full"></span></p>
+        <p class="star-rate"><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span
+            class="icon-star"></span><span class="icon-star-half-full"></span></p>
         <h3><a>{{room.name}}</a></h3>
       </div>
       <div class="one-forth text-center">
@@ -13,6 +14,7 @@
     <p class="features">
       <span class="d-block mb-2" *ngFor="let option of room.options"><i class="icon-check mr-2"></i> {{option}}</span>
     </p>
-    <p><button class="btn btn-primary" (click)="showReservation()">Reserve a room</button></p>
+    <p><button class="btn btn-primary" *ngIf="isAllow" (click)="showReservation()">Reserve a room</button></p>
+    <p><button class="btn btn-primary" *ngIf="!isAllow" data-toggle="modal" data-target="#exampleModal">Reserve a room</button></p>
   </div>
 </div>

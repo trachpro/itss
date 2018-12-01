@@ -7,6 +7,8 @@ import { StorageService } from '../util/storage.service';
 @Injectable()
 export class UserService {
 
+  private uri: string = "api/users";
+  
   constructor(
     private mainApi: MainApiService,
     private storageService: StorageService
@@ -14,12 +16,12 @@ export class UserService {
 
   post(params): Observable<any> {
 
-    return this.mainApi.post('api/users', params);
+    return this.mainApi.post(this.uri, params);
   }
 
   get(id): Observable<any> {
 
-    return this.mainApi.get('api/users/' + id + '?token=' + this.storageService.get('token'));
+    return this.mainApi.get(this.uri + id + '?token=' + this.storageService.get('token'));
   }
 
   update(params): Observable<any> {
@@ -27,5 +29,9 @@ export class UserService {
     params.token = this.storageService.get('token');
 
     return this.mainApi.put('api/users', params);
+  }
+
+  changePassword(params): Observable<any> {
+    return this.mainApi.put(this.uri + "/password", params);
   }
 }

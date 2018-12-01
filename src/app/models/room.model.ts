@@ -18,6 +18,8 @@ export class RoomModel {
 
   name: String;
 
+  roomNo: number;
+
   constructor(params) {
     this._id = params._id;
     this.capacity = params.capacity;
@@ -28,6 +30,7 @@ export class RoomModel {
     this.options = params.options;
     this.img = 'url(' + params.img + ')';
     this.name = params.name;
+    this.roomNo = params.roomNo;
   }
 }
 

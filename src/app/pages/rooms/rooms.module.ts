@@ -5,16 +5,18 @@ import { RouterModule } from '@angular/router';
 import { RoomsRoutes } from './rooms.routes';
 import { CommonsModule } from '../../commons/commons.module';
 import { RoomComponent } from './room/room.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     RoomsComponent,
-    RoomComponent
+    RoomComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(RoomsRoutes),
-    CommonsModule
+    CommonsModule,
+    FormsModule
   ]
 })
 export class RoomsModule { }

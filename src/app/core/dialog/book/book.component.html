@@ -17,8 +17,6 @@
           <p class="features">
             <span class="d-block mb-2" *ngFor="let option of room.options"><i class="icon-check mr-2"></i> {{option}}</span>
           </p>
-          <p><button class="btn btn-primary">Booking</button></p>
-          <p><button class="btn btn-primary" (click)="dialogRef.close()">cancel</button></p>
         </div>
       </div>
     </div>
@@ -28,40 +26,24 @@
           <form action="#">
             <h2 class="mb-4">Contact Details</h2>
             <div class="row mb-5">
-              <div class="col-md-4">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="name">First Name</label>
-                  <input type="text" class="form-control" placeholder="First Name">
+                  <label for="name">Email</label>
+                  <input type="text" name="email" disabled [ngModel]="reservation.customerEmail" class="form-control"
+                    placeholder="First Name">
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <label for="name">Last Name</label>
-                  <input type="text" class="form-control" placeholder="Last Name">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Email</label>
-                  <input type="text" class="form-control" placeholder="Your Email">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Address</label>
-                  <input type="text" class="form-control" placeholder="Phone">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Phone</label>
-                  <input type="text" class="form-control" placeholder="Phone">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="reservation.customerName"
+                    placeholder="Name">
                 </div>
               </div>
             </div>
             <div class="row mb-5">
               <div class="col-md-12">
-                <h2 class="mb-4">Guest Details</h2>
+                <h2 class="mb-4">Booking Details</h2>
               </div>
               <div class="col-md-12">
                 <h3 class="h4">Superior Room - Twin - Best available</h3>
@@ -69,19 +51,25 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="check-in">Check in:</label>
-                  <input type="text" id="checkin_date" class="form-control" placeholder="M/D/YYYY">
+                  <input type="text" id="checkin_date" name="bookingFrom" disabled [value]="reservation.bookingFrom.toLocaleDateString()"
+                    class="form-control" placeholder="YYYY/MM/DD">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="check-out">Check out:</label>
-                  <input type="text" id="checkout_date" class="form-control" placeholder="M/D/YYYY">
+                  <input type="text" id="checkout_date" name="bookingTo" disabled [value]="reservation.bookingTo.toLocaleDateString()"
+                    class="form-control" placeholder="YYYY/MM/DD">
                 </div>
               </div>
             </div>
           </form>
         </div>
       </div>
+    </div>
+    <div class="center">
+      <button class="btn btn-primary" (click)="booking()" style="margin-right: 10px">Booking</button>
+      <button class="btn btn-blue" style="margin-left: 10px" (click)="dialogRef.close()">cancel</button>
     </div>
   </div>
 </div>

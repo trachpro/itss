@@ -16,4 +16,8 @@ export class RoomsService {
   list(): Observable<any> {
     return this.mainApi.get('api/rooms');
   }
+
+  getListByParams(capacity, from, to): Observable<any> {
+    return this.mainApi.get(`api/rooms/${capacity}/${from}/${to}`);
+  }
 }

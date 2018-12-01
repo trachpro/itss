@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RoomsService } from '../../core/api/rooms.service';
 import { LoadingService } from '../../core/util/loading.service';
 import { RoomModel } from '../../models/room.model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ReservationModel } from '../../models/reservation.model';
+import { DialogService } from '../../core/dialog/dialog.service';
 declare var $: any;
 
 const rooms = [
@@ -82,33 +85,87 @@ const rooms = [
 export class RoomsComponent implements OnInit {
 
   listRoom: Array<RoomModel> = [];
+  reservation: ReservationModel;
+  capacity: number;
+  isAllow: boolean = false;
 
   constructor(
     private roomsService: RoomsService,
-    private loading: LoadingService
+    private loading: LoadingService,
+    private router: Router,
+    private activateRoute: ActivatedRoute,
+    private dialogService: DialogService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loading.show();
-    this.roomsService.list().subscribe( data => {
-      this.loading.hide();
-
-      if(data instanceof Array) {
-        data.forEach((element) => {
-          rooms.forEach(ele => {
-            if(element._id == ele._id) {
-              this.listRoom.push(new RoomModel(Object.assign(element, ele)));
-            }
-          });
-        })
-      }
-
-      console.log("roomList: ", this.listRoom);
-      $.contentWayPoint();
+    this.activateRoute.queryParams.subscribe( data => {
+      this.reservation = new ReservationModel(data);
+      this.capacity = data.capacity;
+      this.fetchData()
     })
+  }
+
+  fetchData() {
+    if(this.isAllow = !this.checkParams()) {
+      this.roomsService.getListByParams(this.capacity, this.getFormatedDate(this.reservation.bookingFrom), this.getFormatedDate(this.reservation.bookingTo)).subscribe(data => {
+        this.filterRooms(data.data.rooms);
+        this.loading.hide();
+        $.contentWayPoint();
+      }, () => {
+        this.loading.hide();
+      })
+    } else {
+      this.roomsService.list().subscribe( data => {
+        this.loading.hide();
+        this.filterRooms(data);
+        $.contentWayPoint();
+      }, () => {
+        this.loading.hide();
+      })
+    }
+  }
+
+  filterRooms(data) {
+    if(data instanceof Array) {
+      data.forEach((element) => {
+        rooms.forEach(ele => {
+          if(element._id == ele._id) {
+            this.listRoom.push(new RoomModel(Object.assign(element, ele)));
+          }
+        });
+      })
+    }
+  }
+
+  getFormatedDate(date: Date) {
+    return date.toLocaleDateString().replace('/','-').replace('/','-');
+  }
+
+  checkParams() {
+
+    return !this.reservation.bookingFrom || !this.reservation.bookingTo || !this.capacity;
   }
 
   ngAfterViewInit() {
     $.carousel();
+    $.initDatepicker();
+  }
+
+  submit() {
+    if(!$('#checkin_date').val() || !$('#checkout_date').val() || !this.capacity || !this.compareDate()) {
+      this.dialogService.showError("invalid params");
+      return;
+    }
+    this.reservation.bookingFrom = new Date($('#checkin_date').val());
+    this.reservation.bookingTo = new Date($('#checkout_date').val());
+
+    this.loading.show();
+    this.listRoom = [];
+    this.fetchData();
+  }
+
+  compareDate() {
+    return new Date($('#checkin_date').val()).getTime() <= new Date($('#checkout_date').val()).getTime();
   }
 }

@@ -26,6 +26,16 @@ export class ReservationModel {
     this.total = params.total;
   }
 
+  toApiObject() {
+    return Object.assign({}, this, {
+      bookingFrom: this.getApiDate(this.bookingFrom),
+      bookingTo: this.getApiDate(this.bookingTo)
+    })
+  }
+  getApiDate(date: Date) {
+    return date.toLocaleDateString().replace('/','-').replace('/','-');
+  }
+
   public getBookingFrom() {
     return this.getFormattedDate(this.bookingFrom);
   }

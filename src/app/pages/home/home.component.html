@@ -11,28 +11,28 @@
 
               <div class="book-date one-third">
                 <label for="check-in">Check in:</label>
-                <input type="text" id="checkin_date" class="form-control datepicker" placeholder="M/D/YYYY" onkeydown="return false">
+                <input type="text" id="checkin_date" class="form-control datepicker" placeholder="YYYY/MM/DD" (keydown)="true">
               </div>
 
               <div class="book-date one-third">
                 <label for="check-out">Check out:</label>
-                <input type="text" id="checkout_date" class="form-control datepicker" placeholder="M/D/YYYY" onkeydown="return false">
+                <input type="text" id="checkout_date" class="form-control datepicker" placeholder="YYYY/MM/DD" onkeydown="return true">
               </div>
 
               <div class="one-third">
                 <label for="Guest">Guest:</label>
                 <div class="select-wrap">
                   <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                  <select name="" id="" class="form-control">
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4+</option>
+                  <select name="capacity"  id="" [(ngModel)]="capacity" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4+</option>
                   </select>
                 </div>
               </div>
             </div>
-            <input type="submit" class="search-submit btn btn-primary" value="Check Availability">
+            <input type="submit" (click)="gotoRooms()" class="search-submit btn btn-primary" value="Check Availability">
           </form>
         </div>
       </div>

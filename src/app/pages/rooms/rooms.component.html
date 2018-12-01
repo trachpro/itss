@@ -1,4 +1,42 @@
 <app-slider></app-slider>
+<div class="ftco-section-reservation">
+  <div class="container">
+    <div class="row justify-content-end ftco-animate">
+      <div class="col-lg-4 col-md-5 reservation p-md-5">
+        <div class="block-17">
+          <form action="" method="post" class="d-block">
+            <div class="fields d-block">
+
+              <div class="book-date one-third">
+                <label for="check-in">Check in:</label>
+                <input type="text" id="checkin_date" class="form-control datepicker" placeholder="YYYY/MM/DD" (keydown)="true">
+              </div>
+
+              <div class="book-date one-third">
+                <label for="check-out">Check out:</label>
+                <input type="text" id="checkout_date" class="form-control datepicker" placeholder="YYYY/MM/DD" onkeydown="return true">
+              </div>
+
+              <div class="one-third">
+                <label for="Guest">Guest:</label>
+                <div class="select-wrap">
+                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                  <select name="capacity"  id="" [(ngModel)]="capacity" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4+</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <input type="submit" (click)="submit()" class="search-submit btn btn-primary" value="Check Availability">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <section class="ftco-section room-section bg-light">
   <div class="container">
@@ -10,9 +48,24 @@
     </div>
     <div class="row">
       <div class="col-md-4 ftco-animate" *ngFor="let item of listRoom; let last = last;">
-        <app-room [room]="item" [isLast]="last"></app-room>
+        <app-room [room]="item" [isAllow]="isAllow" [isLast]="last" [(reservation)]="reservation"></app-room>
       </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            You need to check available first
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal -->
   </div>
 </section>
 

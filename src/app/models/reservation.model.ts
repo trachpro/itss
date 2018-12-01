@@ -35,4 +35,17 @@ export class ReservationModel {
   getApiDate(date: Date) {
     return date.toLocaleDateString().replace('/','-').replace('/','-');
   }
+
+  public getBookingFrom() {
+    return this.getFormattedDate(this.bookingFrom);
+  }
+
+  public getBookingTo() {
+    return this.getFormattedDate(this.bookingTo);
+  }
+
+  private getFormattedDate(datetime: Date) {
+    return datetime.getDate() + "-" + datetime.getMonth() + "-" + datetime.getFullYear();
+
+  }
 }

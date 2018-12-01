@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-password',
@@ -6,13 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./password.component.css']
 })
 export class PasswordComponent implements OnInit {
-  private pass: String;
-  private oldPass: String;
-  private confirmPass: String;
+  private newPassword: String;
+  private oldPassword: String;
+  private confirmPassword: String;
   
   constructor() { }
 
   ngOnInit() {
+    
   }
+
+  // reset() {
+  //   this.newPassword = "";
+  //   this.oldPassword = "";
+  //   this.confirmPassword = "";
+  // }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { RoomsService } from '../../api/rooms.service';
 import { LoadingService } from '../../util/loading.service';
+import { ReservationService } from '../../api/reservation.service';
 
 @Component({
   selector: 'app-book',
@@ -15,7 +15,7 @@ export class BookComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<BookComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private roomsService: RoomsService,
+    private reservationService: ReservationService,
     private loading: LoadingService
   ) {
     this.room = this.data.room;
@@ -27,17 +27,19 @@ export class BookComponent implements OnInit {
 
   booking() {
     this.loading.show();
-    this.roomsService.registerReservation(this.reservation.toApiObject()).subscribe(res => {
+    this.reservationService.registerReservation(this.reservation.toApiObject()).subscribe(res => {
       this.loading.hide();
+      console.log("success: ", res);
       this.dialogRef.close({
         status: 1,
         message: res.message
       })
     }, error => {
       this.loading.hide();
+      console.log("error: ", error);
       this.dialogRef.close({
         status: 0,
-        message: error.message
+        message: JSON.parse(error._body).message
       })
     })
   }

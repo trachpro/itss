@@ -1,4 +1,4 @@
-<nav *ngIf="!activeString.includes('/login')" class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+<nav *ngIf="!activeString.includes('/login') && !activeString.includes('/admin')" class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
   id="ftco-navbar">
   <div class="container">
     <a class="navbar-brand" routerLink="/home">Cozy</a>
@@ -13,7 +13,7 @@
         <li [ngClass]="activeString.includes('/about')? 'nav-item active': 'nav-item'"><a routerLink="/about" class="nav-link">About</a></li>
         <li [ngClass]="activeString.includes('/rooms')? 'nav-item active': 'nav-item'"><a class="nav-link" routerLink="/rooms" >Rooms</a></li>
         <!-- <li [ngClass]="activeString.includes('/services')? 'nav-item active': 'nav-item'"><a routerLink="/services" class="nav-link">Amenities</a></li> -->
-        <li [ngClass]="activeString.includes('/booking')? 'nav-item active': 'nav-item'"><a routerLink="/booking" class="nav-link">Booking</a></li>
+        <li [ngClass]="activeString.includes('/admin')? 'nav-item active': 'nav-item'"><a routerLink="/admin" class="nav-link">admin</a></li>
         <li [ngClass]="activeString.includes('/contact')? 'nav-item active': 'nav-item'"><a routerLink="/contact" class="nav-link">Contact</a></li>
         <li [ngClass]="activeString.includes('/profile')? 'nav-item active': 'nav-item'"><a routerLink="/profile" class="nav-link">Profile</a></li>
         <li class="nav-item" *ngIf="!isLog"><a routerLink="/login" class="nav-link">Login</a></li>

@@ -21,8 +21,8 @@ const routes: Routes = [
     path: 'contact',
     loadChildren: './pages/contact/contact.module#ContactModule'
   }, {
-    path: 'booking',
-    loadChildren: './pages/booking/booking.module#BookingModule'
+    path: 'admin',
+    loadChildren: './pages/admin/admin.module#AdminModule'
   }, {
     path: 'services',
     loadChildren: './pages/services/services.module#ServicesModule'

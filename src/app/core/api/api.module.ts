@@ -10,6 +10,7 @@ import { ImageService } from './image.service';
 import { DialogModule } from '../dialog/dialog.module';
 import { ReservationService } from './reservation.service';
 import { RoomsService } from './rooms.service';
+import { RevenueService } from './revenue.service';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { RoomsService } from './rooms.service';
     ImageService,
     DialogModule,
     ReservationService,
-    RoomsService
+    RoomsService,
+    RevenueService
   ]
 })
 export class ApiModule {}

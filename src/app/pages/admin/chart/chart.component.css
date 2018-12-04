@@ -1,0 +1,10 @@
+.date-input {
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    display: flex;
+    flex-direction: row;
+}
+.date-chosen {
+    margin-left: 10px;
+    margin-right: 10px;
+}

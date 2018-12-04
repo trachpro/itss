@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule } from '@angular/router';
 import { AdminRoutes } from './admin.routes';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
-    AdminComponent
+    AdminComponent,
+    ChartComponent
   ],
   imports: [
     CommonModule,

@@ -113,4 +113,12 @@ export class FormatService {
 
     return res;
   }
+
+  getFormatedDate(date: Date) {
+      let year = date.getFullYear();
+      let month = date.getMonth();
+      let sdate = date.getDate();
+      return year + "-" + month + "-" + sdate;
+    // return date.toLocaleDateString().replace('/','-').replace('/','-');
+  }
 }

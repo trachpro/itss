@@ -8,7 +8,7 @@ import { StorageService } from '../util/storage.service';
 export class UserService {
 
   private uri: string = "api/users";
-  
+
   constructor(
     private mainApi: MainApiService,
     private storageService: StorageService
@@ -28,7 +28,7 @@ export class UserService {
 
     params.token = this.storageService.get('token');
 
-    return this.mainApi.put('api/users', params);
+    return this.mainApi.put(this.uri, params);
   }
 
   changePassword(params): Observable<any> {

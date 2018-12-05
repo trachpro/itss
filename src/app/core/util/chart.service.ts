@@ -17,7 +17,7 @@ export class ChartService {
           data: {
             labels: label,
             datasets: [{
-              label: "Sessions",
+              label: "Revenue",
               lineTension: 0.3,
               backgroundColor: "rgba(2,117,216,0.2)",
               borderColor: "rgba(2,117,216,1)",
@@ -68,7 +68,7 @@ export class ChartService {
         data: {
           labels: label,
           datasets: [{
-            label: "Revenue",
+            label: "Rooms",
             backgroundColor: "rgba(2,117,216,1)",
             borderColor: "rgba(2,117,216,1)",
             data: data,

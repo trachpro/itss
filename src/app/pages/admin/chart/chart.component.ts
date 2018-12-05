@@ -29,18 +29,33 @@ export class ChartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.callApiGetRevenue(this.from, this.to)
+    // this.callApiGetRevenue(this.from, this.to)
   }
 
   ngAfterViewInit() {
     $.initDatepicker();
+
+    $("app-chart").mouseup(function (e) {
+      var container = $(".datepicker.datepicker-dropdown");
+
+      // if the target of the click isn't the container nor a descendant of the container
+      if (
+        !container.is(e.target) &&
+        container.has(e.target).length === 0 &&
+        (!$(e.target).attr('class') ||
+        $(e.target).attr('class').indexOf('form-control datepicker') == -1)
+      ) {
+
+        container.hide();
+      }
+    });
   }
 
   submit() {
     this.from = $("#checkin_date").val()
     this.to = $("#checkout_date").val()
 
-    this.callApiGetRevenue(this.from, this.to);
+    // this.callApiGetRevenue(this.from, this.to);
   }
 
   /**

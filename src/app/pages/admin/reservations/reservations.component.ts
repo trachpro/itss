@@ -14,6 +14,8 @@ export class ReservationsComponent implements OnInit {
 
   private statusList: Array<String> = ['CANCELLED','BOOKING','CHECK-IN'];
   private reservationList: Array<ReservationModel> = [];
+  private table: any;
+
   constructor(
     private loading: LoadingService,
     private reservationService: ReservationService,
@@ -25,6 +27,7 @@ export class ReservationsComponent implements OnInit {
   }
 
   fetchData() {
+    $('#dataTable').DataTable().destroy();
     this.reservationList = [];
     this.loading.show();
     this.reservationService.getReservationList({
@@ -34,7 +37,8 @@ export class ReservationsComponent implements OnInit {
       data.data.content.map( element => {
         this.reservationList.push(new ReservationModel(element));
       })
-      $(document).ready(function() {
+      console.log("reservation: ", this.reservationList)
+      $(document).ready(() => {
         $('#dataTable').DataTable();
       });
       this.loading.hide();
@@ -48,9 +52,5 @@ export class ReservationsComponent implements OnInit {
     this.dialogService.showReservation({
       reservation: item
     })
-  }
-
-  check() {
-    console.log(this.statusList);
   }
 }

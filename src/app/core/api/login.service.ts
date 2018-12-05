@@ -25,6 +25,11 @@ export class LoginService {
     return this.mainApi.post('forgetpassword',params);
   }
 
+  loginStaff(params): Observable<any> {
+
+    return this.mainApi.post('staff/login', params);
+  }
+
 
   refreshKey(): Observable<any> {
 
@@ -33,7 +38,7 @@ export class LoginService {
       this.mainApi.get('refreshToken?token='+this.storageService.get('token')).subscribe( data => {
 
         this.storageService.set('token',data.token);
-        
+
         observer.next();
         observer.complete();
       }, error => {
@@ -41,7 +46,7 @@ export class LoginService {
         this.dialogService.showError("Your Session work is expired! goto login!").subscribe( data => {
 
           this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url }});
-          
+
         })
         observer.error();
         observer.complete();

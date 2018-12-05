@@ -22,4 +22,8 @@ export class ReservationService {
     registerReservation(params): Observable<any> {
       return this.mainApi.post('api/reservations', params);
     }
+
+    getReservationList(params, offset, limit): Observable<any> {
+      return this.mainApi.post(`api/reservations/${offset}/${limit}`, params);
+    }
 }

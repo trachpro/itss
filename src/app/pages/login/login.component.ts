@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   private isRemember: Boolean;
   private message: String;
   private returnUrl: any;
+  private isStaff: boolean = false;
 
   constructor(
     private loginService: LoginService,
@@ -48,23 +49,31 @@ export class LoginComponent implements OnInit {
 
     this.save();
 
-    this.loadingService.show();
-    this.loginService.login({email: this.email,password: this.password}).subscribe( data => {
+    const func = this.isStaff? this.loginService.loginStaff.bind(this.loginService): this.loginService.login.bind(this.loginService);
 
-      console.log("data: ", data);
+    this.loadingService.show();
+    func({email: this.email,password: this.password}).subscribe(
+      this.handleSuccess.bind(this),
+      this.handleError.bind(this)
+    )
+  }
+
+  handleError(error) {
+    this.loadingService.hide();
+      this.message = (error.message) ? error.message : "Cannot perform action"
+  }
+
+  handleSuccess(data) {
+    console.log("data: ", data);
       this.storageService.set('accessToken',data.accessToken);
       this.storageService.set('id', data.id);
       this.storageService.set('name', data.name);
       this.storageService.set('role', data.role);
       this.storageService.set('email', data.email);
 
-      this.router.navigate([this.returnUrl? this.returnUrl: '/home']);
+      this.router.navigate([this.returnUrl? this.returnUrl: data.role === "ROLE_CLIENT"? '/home': '/admin']);
 
       this.loadingService.hide();
-    }, error => {
-      this.loadingService.hide();
-      this.message = (error.message) ? error.message : "Cannot perform action"
-    })
   }
 
   save() {

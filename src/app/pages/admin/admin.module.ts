@@ -4,15 +4,21 @@ import { AdminComponent } from './admin.component';
 import { RouterModule } from '@angular/router';
 import { AdminRoutes } from './admin.routes';
 import { ChartComponent } from './chart/chart.component';
+import { CommonsModule } from '../../commons/commons.module';
+import { ReservationsComponent } from './reservations/reservations.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AdminComponent,
-    ChartComponent
+    ChartComponent,
+    ReservationsComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(AdminRoutes)
+    RouterModule.forChild(AdminRoutes),
+    CommonsModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

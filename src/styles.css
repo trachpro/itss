@@ -9,3 +9,10 @@
 .datepicker.dropdown-menu {
   z-index: 9999999999999;
 }
+
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+
+tr {
+  cursor: pointer;
+}

@@ -44,6 +44,10 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   }
 }
 
+app-sidebar-admin {
+  background-color: #212529;
+}
+
 .scroll-to-top {
   position: fixed;
   right: 15px;

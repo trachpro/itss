@@ -1,0 +1,98 @@
+<body id="page-top">
+  <app-navbar-admin></app-navbar-admin>
+  <div id="wrapper">
+    <app-sidebar-admin></app-sidebar-admin>
+    <div id="content-wrapper">
+      <div class="container-fluid">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a routerLink="/admin">Admin</a>
+          </li>
+          <li class="breadcrumb-item active">Charts</li>
+        </ol>
+        <div class="date-input">
+          <div class="date-chosen one-third">
+            <label for="check-in">From:</label>
+            <input type="text" id="checkin_date" class="form-control datepicker" placeholder="YYYY/MM/DD" (keydown)="true">
+          </div>
+          <div class="date-chosen one-third">
+            <label for="check-out">Status:</label>
+            <select multiple class="form-control" [(ngModel)]="statusList">
+              <option value="CANCELLED">Đã Hủy</option>
+              <option value="BOOKING">Đang Đặt</option>
+              <option value="CHECK-IN">Hoàn Thành</option>
+            </select>
+          </div>
+          <div class="date-chosen one-third">
+            <label for="check" style="opacity: 0">asdf</label>
+            <button class="btn btn-primary btn-check" (click)="fetchData()">check</button>
+          </div>
+        </div>
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Data Table Example</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Booking From</th>
+                    <th>Booking To</th>
+                    <th>Checkin</th>
+                    <th>Checkout</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Code</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Booking From</th>
+                    <th>Booking To</th>
+                    <th>Checkin</th>
+                    <th>Checkout</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr *ngFor="let item of reservationList" (click)="openReservation(item)">
+                    <td>{{item.code}}</td>
+                    <td>{{item.customerEmail}}</td>
+                    <td>{{item.customerName}}</td>
+                    <td>{{item.bookingFrom}}</td>
+                    <td>{{item.bookingTo}}</td>
+                    <td>{{item.checkin}}</td>
+                    <td>{{item.checkout}}</td>
+                    <td>{{item.status}}</td>
+                    <td>{{item.total}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+      </div>
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Your Website 2018</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+</body>

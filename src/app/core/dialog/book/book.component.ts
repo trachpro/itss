@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { LoadingService } from '../../util/loading.service';
 import { ReservationService } from '../../api/reservation.service';
+import { FormatService } from '../../util/format.service';
 
 @Component({
   selector: 'app-book',
@@ -16,10 +17,11 @@ export class BookComponent implements OnInit {
     private dialogRef: MatDialogRef<BookComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private reservationService: ReservationService,
-    private loading: LoadingService
+    private loading: LoadingService,
+    private formatService: FormatService
   ) {
-    this.room = this.data.room;
     this.reservation = this.data.reservation;
+    this.room = this.data.room? this.data.room: this.formatService.getRoomByRoomNo(this.reservation.roomNo);
   }
 
   ngOnInit() {

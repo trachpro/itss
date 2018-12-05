@@ -8,6 +8,7 @@ import { ConfigService } from '../config.service';
 import { LoadingService } from './loading.service';
 import { FormatService } from './format.service';
 import { MatchingValidatorDirective } from './matching-validator.directive'
+import { ChartService } from './chart.service';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { MatchingValidatorDirective } from './matching-validator.directive'
     ConfigService,
     LoadingService,
     FormatService,
+    ChartService
   ],
   exports: [
     MatchingValidatorDirective

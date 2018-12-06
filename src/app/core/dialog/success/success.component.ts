@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+declare let $: any;
 
 @Component({
   selector: 'app-success',
@@ -14,5 +15,9 @@ export class SuccessComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    $(".mat-dialog-container").css({"padding": "0"});
   }
 }

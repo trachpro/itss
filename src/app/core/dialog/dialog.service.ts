@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorComponent } from './error/error.component';
 import { SuccessComponent } from './success/success.component';
 import { BookComponent } from './book/book.component';
+import { StaffDialog } from './staff/staff.dialog';
 
 @Injectable()
 export class DialogService {
@@ -32,5 +33,10 @@ export class DialogService {
     if(!data) data = {};
 
     return this.dialog.open(BookComponent, { data: data}).afterClosed();
+  }
+
+  showStaffRegisterForm(data): Observable<any> {
+
+    return this.dialog.open(StaffDialog, { data: data}).afterClosed();
   }
 }

@@ -1,0 +1,39 @@
+<div class="content-w3ls">
+  <div class="content-top-agile">
+    <button (click)="dialogRef.close()" type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h2>New Staff</h2>
+  </div>
+  <div class="content-bottom">
+    <form action="#" method="post">
+      <div class="err-msg">
+        {{message}}
+      </div>
+      <div class="field-group">
+        <span class="fa fa-user" aria-hidden="true"></span>
+        <div class="wthree-field">
+          <input [(ngModel)]="data.name" name="name" id="name" type="text" placeholder="name" required>
+        </div>
+      </div>
+      <div class="field-group">
+        <span class="fa fa-user" aria-hidden="true"></span>
+        <div class="wthree-field">
+          <input [(ngModel)]="data.email" name="email" id="email" type="text" placeholder="email" required>
+        </div>
+      </div>
+      <div class="field-group">
+        <span class="fa fa-user" aria-hidden="true"></span>
+        <div class="wthree-field">
+          <select class="form-control" name="role" [(ngModel)]="data.role">
+            <option value="ROLE_STAFF">Nhân Viên</option>
+            <option value="ROLE_MANAGER">Quản Lý</option>
+          </select>
+        </div>
+      </div>
+      <div class="wthree-field">
+        <input (click)="register()" id="saveForm" name="saveForm" type="submit" value="sign in" />
+      </div>
+    </form>
+  </div>
+</div>

@@ -7,13 +7,15 @@ import { ChartComponent } from './chart/chart.component';
 import { CommonsModule } from '../../commons/commons.module';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { FormsModule } from '@angular/forms';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { StaffsComponent } from './staffs/staffs.component'
 
 @NgModule({
   declarations: [
     AdminComponent,
     ChartComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    StaffsComponent
   ],
   imports: [
     CommonModule,

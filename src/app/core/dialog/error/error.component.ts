@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+declare let $: any;
 
 @Component({
   selector: 'app-error',
@@ -16,4 +17,7 @@ export class ErrorComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngAfterViewInit() {
+    $(".mat-dialog-container").css({"padding": "0"});
+  }
 }

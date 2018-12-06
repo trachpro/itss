@@ -7,6 +7,7 @@ import { ErrorComponent } from './error/error.component';
 import { SuccessComponent } from './success/success.component';
 import { BookComponent } from './book/book.component';
 import { FormsModule } from '@angular/forms';
+import { StaffDialog } from './staff/staff.dialog';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     ErrorComponent,
     SuccessComponent,
-    BookComponent
+    BookComponent,
+    StaffDialog
   ],
   providers: [
     DialogService
@@ -25,7 +27,8 @@ import { FormsModule } from '@angular/forms';
   entryComponents: [
     ErrorComponent,
     SuccessComponent,
-    BookComponent
+    BookComponent,
+    StaffDialog
   ]
 })
 export class DialogModule { }

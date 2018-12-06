@@ -43,23 +43,48 @@
             </div>
             <div class="row mb-5">
               <div class="col-md-12">
-                <h2 class="mb-4">Booking Details</h2>
-              </div>
-              <div class="col-md-12">
-                <h3 class="h4">Superior Room - Twin - Best available</h3>
+                <h2 class="mb-4">Booking Details - {{reservation.code}}</h2>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="check-in">Check in:</label>
+                  <label for="check-in">Booking From:</label>
                   <input type="text" id="checkin_date" name="bookingFrom" disabled [value]="reservation.bookingFrom.toLocaleDateString()"
                     class="form-control" placeholder="YYYY/MM/DD">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="check-out">Check out:</label>
+                  <label for="check-out">Booking To:</label>
                   <input type="text" id="checkout_date" name="bookingTo" disabled [value]="reservation.bookingTo.toLocaleDateString()"
                     class="form-control" placeholder="YYYY/MM/DD">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="check-in">Check-in Time:</label>
+                  <input type="text" id="checkin_date_time" name="bookingFrom" disabled [value]="reservation.getTimeFormatCheckin()"
+                    class="form-control" placeholder="YYYY/MM/DD">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="check-out">Check-out time:</label>
+                  <input type="text" id="checkout_date_time" name="bookingTo" disabled [value]="reservation.getTimeFormatCheckout()"
+                    class="form-control" placeholder="YYYY/MM/DD">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="check-in">Status:</label>
+                  <input type="text" id="status" name="bookingFrom" disabled [value]="reservation.status"
+                    class="form-control" placeholder="">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="check-out">Total:</label>
+                  <input type="text" id="total" name="bookingTo" disabled [value]="reservation.total"
+                    class="form-control" placeholder="">
                 </div>
               </div>
             </div>

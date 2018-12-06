@@ -46,7 +46,7 @@ export class ChartComponent implements OnInit {
         $(e.target).attr('class').indexOf('form-control datepicker') == -1)
       ) {
 
-        container.hide();
+        container.remove();
       }
     });
   }

@@ -3,6 +3,8 @@ import { LoadingService } from '../../../core/util/loading.service';
 import { ReservationService } from '../../../core/api/reservation.service';
 import { ReservationModel } from '../../../models/reservation.model';
 import { DialogService } from '../../../core/dialog/dialog.service';
+import { RoomsService } from '../../../core/api/rooms.service';
+import { FormatService } from '../../../core/util/format.service';
 declare let $: any;
 
 @Component({
@@ -15,11 +17,14 @@ export class ReservationsComponent implements OnInit {
   private statusList: Array<String> = ['CANCELLED','BOOKING','CHECK-IN'];
   private reservationList: Array<ReservationModel> = [];
   private table: any;
+  private roomObj = {};
 
   constructor(
     private loading: LoadingService,
     private reservationService: ReservationService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private roomService: RoomsService,
+    private formatService: FormatService
   ) { }
 
   ngOnInit() {
@@ -48,9 +53,20 @@ export class ReservationsComponent implements OnInit {
     })
   }
 
-  openReservation(item) {
+  async openReservation(item) {
+    if(!this.roomObj[item.roomNo]) {
+      this.loading.show();
+      await this.roomService.getRoomByRoomNo(item.roomNo).toPromise().then(result => {
+        console.log("result: ", result);
+        this.roomObj[item.roomNo] = Object.assign({}, this.formatService.getRoomByRoomNo(item.roomNo), result);
+        this.loading.hide();
+      }, error => {
+        this.loading.hide();
+      })
+    }
     this.dialogService.showReservation({
-      reservation: item
+      reservation: item,
+      room: this.roomObj[item.roomNo]
     })
   }
 }

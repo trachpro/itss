@@ -46,6 +46,21 @@ export class ReservationModel {
 
   private getFormattedDate(datetime: Date) {
     return datetime.getDate() + "-" + datetime.getMonth() + "-" + datetime.getFullYear();
+  }
 
+  public getTimeFormatCheckin() {
+    if(!(this.checkin instanceof Date)) {
+      return ''
+    } else {
+      return `${this.checkin.toLocaleDateString()} ${this.checkin.getHours()}:${this.checkin.getMinutes()}`
+    }
+  }
+
+  public getTimeFormatCheckout() {
+    if(!(this.checkout instanceof Date)) {
+      return ''
+    } else {
+      return `${this.checkout.toLocaleDateString()} ${this.checkout.getHours()}:${this.checkout.getMinutes()}`
+    }
   }
 }

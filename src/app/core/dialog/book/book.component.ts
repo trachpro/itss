@@ -27,6 +27,20 @@ export class BookComponent implements OnInit {
   ngOnInit() {
   }
 
+  update() {
+    this.loading.show();
+    this.reservationService.updateStatus(this.reservation.status, this.reservation.code).subscribe( res => {
+      this.loading.hide();
+      this.dialogRef.close({
+        update: 1,
+        message: res.message
+      })
+    }, error => {
+      this.loading.hide();
+      console.log("error: ", error);
+    })
+  }
+
   booking() {
     this.loading.show();
     this.reservationService.registerReservation(this.reservation.toApiObject()).subscribe(res => {

@@ -26,4 +26,13 @@ export class ReservationService {
     getReservationList(params, offset, limit): Observable<any> {
       return this.mainApi.post(`api/reservations/${offset}/${limit}`, params);
     }
+
+    updateStatus(status: string, code): Observable<any> {
+      switch(status) {
+        case 'CANCELLED': status = 'cancel'; break;
+        case 'CHECK-IN': status = 'check-in'; break;
+        case 'FINISHED': status = 'check-out'; break;
+      }
+      return this.mainApi.put(`api/reservations/${status}/${code}`, {});
+    }
 }

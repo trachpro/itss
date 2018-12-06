@@ -7,6 +7,7 @@ import { ChartComponent } from './chart/chart.component';
 import { CommonsModule } from '../../commons/commons.module';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { FormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     RouterModule.forChild(AdminRoutes),
     CommonsModule,
-    FormsModule
+    FormsModule,
+    BsDatepickerModule.forRoot()
   ]
 })
 export class AdminModule { }

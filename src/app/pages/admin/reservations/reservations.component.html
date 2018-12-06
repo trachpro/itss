@@ -68,12 +68,12 @@
                     <td>{{item.code}}</td>
                     <td>{{item.customerEmail}}</td>
                     <td>{{item.customerName}}</td>
-                    <td>{{item.bookingFrom}}</td>
-                    <td>{{item.bookingTo}}</td>
-                    <td>{{item.checkin}}</td>
-                    <td>{{item.checkout}}</td>
+                    <td>{{item.bookingFrom.toLocaleDateString()}}</td>
+                    <td>{{item.bookingTo.toLocaleDateString()}}</td>
+                    <td>{{item.getTimeFormatCheckin()}}</td>
+                    <td>{{item.getTimeFormatCheckout()}}</td>
                     <td>{{item.status}}</td>
-                    <td>{{item.total}}</td>
+                    <td>{{item.total | currency}}</td>
                   </tr>
                 </tbody>
               </table>

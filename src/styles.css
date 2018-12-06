@@ -10,9 +10,13 @@
   z-index: 9999999999999;
 }
 
-tr:nth-child(even) {background: #CCC}
-tr:nth-child(odd) {background: #FFF}
+#dataTable tbody tr:nth-child(even) {background: #CCC}
+#dataTable tbody tr:nth-child(odd) {background: #FFF}
 
 tr {
   cursor: pointer;
+}
+
+.bs-datepicker-container {
+  padding: 0
 }

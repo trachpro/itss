@@ -1,9 +1,9 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { RevenueService } from '../../../core/api/revenue.service';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormatService } from 'src/app/core/util/format.service';
 import { MaxLengthValidator } from '@angular/forms';
 import { LoadingService } from '../../../core/util/loading.service';
+import {ChartService} from '../../../core/util/chart.service';
 
 declare var $: any;
 declare let Chart: any;
@@ -11,7 +11,7 @@ declare let Chart: any;
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['../admin.component.css', './chart.component.css']
+  styleUrls: ['../admin.component.css', './chart.component.css' ]
 })
 export class ChartComponent implements OnInit {
 
@@ -19,17 +19,22 @@ export class ChartComponent implements OnInit {
   private listRevenues: Array<String> = [];
   private listNumberOfBookedRooms: Array<String> = [];
 
-  private from: string = "2018/10/10"; // default values
-  private to: string = "2018/12/30";
+  private from: string // default values
+  private to: string
+
 
   constructor(
     private revenueService: RevenueService,
     private formatService: FormatService,
-    private loading: LoadingService
+    private loading: LoadingService,
+    private chartService: ChartService
   ) { }
 
   ngOnInit() {
-    // this.callApiGetRevenue(this.from, this.to)
+
+    this.from = "2018/10/10";
+    this.to = "2018/12/30";
+    this.callApiGetRevenue(this.from, this.to)
   }
 
   ngAfterViewInit() {
@@ -52,10 +57,7 @@ export class ChartComponent implements OnInit {
   }
 
   submit() {
-    this.from = $("#checkin_date").val()
-    this.to = $("#checkout_date").val()
-
-    // this.callApiGetRevenue(this.from, this.to);
+    this.callApiGetRevenue(this.from, this.to);
   }
 
   /**
@@ -79,72 +81,25 @@ export class ChartComponent implements OnInit {
         this.listTime.push(e.time);
         this.listRevenues.push(e.revenue);
         this.listNumberOfBookedRooms.push(e.numberOfRooms)
+
       })
 
       this.loading.hide();
 
       // draw line chart
       var ctx = document.getElementById("myAreaChart");
-      this.drawLineChart(ctx,
-        this.listTime,
-        this.listRevenues)
+      this.chartService.drawLineChart(ctx,
+                                      this.listTime,
+                                      this.listRevenues)
+
+        let barChart = $("#myBarChart");
+        this.chartService.drawBarChart(barChart,
+                                      this.listTime,
+                                      this.listNumberOfBookedRooms)
 
     }, err => {
       this.loading.hide();
     })
-  }
-
-
-
-  drawLineChart(element, label, data) {
-    var myLineChart = new Chart(element, {
-      type: 'line',
-      data: {
-        labels: label,
-        datasets: [{
-          label: "Sessions",
-          lineTension: 0.3,
-          backgroundColor: "rgba(2,117,216,0.2)",
-          borderColor: "rgba(2,117,216,1)",
-          pointRadius: 5,
-          pointBackgroundColor: "rgba(2,117,216,1)",
-          pointBorderColor: "rgba(255,255,255,0.8)",
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(2,117,216,1)",
-          pointHitRadius: 50,
-          pointBorderWidth: 2,
-          data: data,
-        }],
-      },
-      options: {
-        scales: {
-          xAxes: [{
-            time: {
-              unit: 'date'
-            },
-            gridLines: {
-              display: false
-            },
-            ticks: {
-              maxTicksLimit: 7
-            }
-          }],
-          yAxes: [{
-            ticks: {
-              min: 0,
-              max: Math.max(...data),
-              maxTicksLimit: 5
-            },
-            gridLines: {
-              color: "rgba(0, 0, 0, .125)",
-            }
-          }],
-        },
-        legend: {
-          display: false
-        }
-      }
-    });
   }
 
   getFormatedDate(date: Date) {

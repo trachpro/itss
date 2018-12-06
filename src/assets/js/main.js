@@ -440,9 +440,9 @@
   }
 
   $.initDatepicker = function() {
-    $('#checkin_date, #checkout_date, #birth_date, #arrival_date, #departure_date, #expiration_date').datepicker({
+    $('#checkin_date, #checkout_date, #birth_date, #arrival_date, #departure_date, #expiration_date, #date_from, #date_to').datepicker({
       'format': 'yyyy/mm/dd',
-      'autoclose': true
+	  'autoclose': true,
     });
     $('#book_time, #arrival_time, #departure_time').timepicker();
   }

@@ -5,6 +5,7 @@ import { FormatService } from 'src/app/core/util/format.service';
 import { MaxLengthValidator } from '@angular/forms';
 import { LoadingService } from '../../../core/util/loading.service';
 import {ChartService} from '../../../core/util/chart.service';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 
 declare var $: any;
 declare let Chart: any;
@@ -12,7 +13,7 @@ declare let Chart: any;
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['../admin.component.css', './chart.component.css']
+  styleUrls: ['../admin.component.css', './chart.component.css' ]
 })
 export class ChartComponent implements OnInit {
 
@@ -32,32 +33,17 @@ export class ChartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.from = "2018/10/10";
     this.to = "2018/12/30";
     this.callApiGetRevenue(this.from, this.to)
   }
 
   ngAfterViewInit() {
-
-      $.loader();
-      $.carousel();
-      $.scrollWindow();
-      $.mobileMenuOutsideClick();
-      $.offcanvasMenu();
-      $.burgerMenu();
-      $.counter();
-      $.contentWayPoint();
-      $.OnePageNav();
-      $.initDatepicker();
-      $(".datepicker").datepicker({
-        autoclose: true,
-      })
+  
   }
 
   submit() {
-    // this.from = $("#date_from").val()
-    // this.to = $("#date_to").val()
-
     this.callApiGetRevenue(this.from, this.to);
   }
 

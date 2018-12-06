@@ -10,18 +10,33 @@
           </li>
           <li class="breadcrumb-item active">Charts</li>
         </ol>
-        
-        <form action="" class="date-input">
+
+        <div class="date-input" id="datepickerInChart">
           <div class="date-chosen one-third">
-              <label for="from">From:</label>
-              <input type="text" id="date_from" name="from" class="form-control datepicker" placeholder="YYYY/MM/DD" [(ngModel)]="from" (keydown)="false">
+            <label for="check-in">From:</label>
+            <!-- <input type="text" bsDatepicker [(ngModel)]="from" class="form-control datepicker" placeholder="YYYY/MM/DD" (keydown)="false"> -->
+
+            <input type="text"
+           placeholder="Datepicker"
+           class="form-control datepicker"
+           [(ngModel)]="from"
+           bsDatepicker
+           [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }"
+           (keydown)="false">
+
           </div>
 
           <div class="date-chosen one-third">
               <label for="to">To:</label>
-              <input type="text" id="date_to" name="to" class="form-control datepicker" placeholder="YYYY/MM/DD" [(ngModel)]="to" (keydown)="false">
+              <input type="text"
+           placeholder="Datepicker"
+           class="form-control datepicker"
+           [(ngModel)]="to"
+           bsDatepicker
+           [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }"
+           (keydown)="false">
           </div>
-        </form>
+        </div>
 
         <div class="analyze-btn">
           <button class="btn btn-info" (click)="submit()">Analyze</button>
@@ -115,8 +130,8 @@
   <!-- <script src="js/sb-admin.min.js"></script> -->
 
   <!-- Demo scripts for this page-->
-  <!-- <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-bar-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script> -->
-
+  <!-- <script src="js/demo/chart-area-demo.js"></script> -->
+  <!-- <script src="js/demo/chart-bar-demo.js"></script> -->
+  <!-- <script src="js/demo/chart-pie-demo.js"></script> --> 
+    <!-- </div> -->
 </body>

@@ -9,12 +9,14 @@
 
               <div class="book-date one-third">
                 <label for="check-in">Check in:</label>
-                <input type="text" id="checkin_date" class="form-control datepicker" placeholder="YYYY/MM/DD" (keydown)="true">
+                <input type="text" placeholder="Datepicker" name="bookingFrom" class="form-control datepicker" [(ngModel)]="bookingFrom"
+                  bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }" (keydown)="false">
               </div>
 
               <div class="book-date one-third">
                 <label for="check-out">Check out:</label>
-                <input type="text" id="checkout_date" class="form-control datepicker" placeholder="YYYY/MM/DD" onkeydown="return true">
+                <input type="text" placeholder="Datepicker" name="bookingTo" class="form-control datepicker" [(ngModel)]="bookingTo"
+                  bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }" (keydown)="false">
               </div>
 
               <div class="one-third">

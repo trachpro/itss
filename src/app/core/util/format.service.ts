@@ -126,6 +126,12 @@ export class FormatService {
     return date.toLocaleDateString().replace('/','-').replace('/','-');
   }
 
+  getYYYYMMDD(date) {
+    if(date instanceof Date) {
+      return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+    } else return '';
+  }
+
   formatData(src, mainProp, level?) {
 
     level = level? level: 1;

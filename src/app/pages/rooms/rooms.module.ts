@@ -6,6 +6,7 @@ import { RoomsRoutes } from './rooms.routes';
 import { CommonsModule } from '../../commons/commons.module';
 import { RoomComponent } from './room/room.component';
 import { FormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     RouterModule.forChild(RoomsRoutes),
     CommonsModule,
-    FormsModule
+    FormsModule,
+    BsDatepickerModule.forRoot()
   ]
 })
 export class RoomsModule { }

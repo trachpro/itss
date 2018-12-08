@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ReservationModel } from '../../models/reservation.model';
 import { DialogService } from '../../core/dialog/dialog.service';
 import { StorageService } from '../../core/util/storage.service';
+import { FormatService } from '../../core/util/format.service';
 declare var $: any;
 
 const rooms = [
@@ -86,10 +87,12 @@ const rooms = [
 export class RoomsComponent implements OnInit {
 
   listRoom: Array<RoomModel> = [];
-  reservation: ReservationModel;
-  capacity: number;
+  reservation: ReservationModel = new ReservationModel({});
+  capacity: number = 1;
   isAllow: boolean = false;
   isLogin: boolean;
+  bookingFrom: string;
+  bookingTo: string;
 
   constructor(
     private roomsService: RoomsService,
@@ -97,7 +100,8 @@ export class RoomsComponent implements OnInit {
     private router: Router,
     private activateRoute: ActivatedRoute,
     private dialogService: DialogService,
-    private storage: StorageService
+    private storage: StorageService,
+    private formatService: FormatService
   ) {
     this.isLogin = this.storage.get("accessToken");
   }
@@ -106,6 +110,8 @@ export class RoomsComponent implements OnInit {
     this.loading.show();
     this.activateRoute.queryParams.subscribe( data => {
       this.reservation = new ReservationModel(data);
+      this.bookingFrom = this.formatService.getYYYYMMDD(this.reservation.bookingFrom || new Date());
+      this.bookingTo = this.formatService.getYYYYMMDD(this.reservation.bookingTo|| new Date());
       this.capacity = data.capacity;
       this.fetchData()
     })
@@ -113,6 +119,8 @@ export class RoomsComponent implements OnInit {
 
   fetchData() {
     if(this.isAllow = !this.checkParams()) {
+      this.reservation.bookingFrom = new Date(this.bookingFrom);
+      this.reservation.bookingTo = new Date(this.bookingTo);
       this.roomsService.getListByParams(this.capacity, this.getFormatedDate(this.reservation.bookingFrom), this.getFormatedDate(this.reservation.bookingTo)).subscribe(data => {
         this.filterRooms(data.data.rooms);
         this.loading.hide();
@@ -133,6 +141,7 @@ export class RoomsComponent implements OnInit {
 
   filterRooms(data) {
     if(data instanceof Array) {
+      this.listRoom = [];
       data.forEach((element) => {
         rooms.forEach(ele => {
           if(element._id == ele._id) {
@@ -149,7 +158,7 @@ export class RoomsComponent implements OnInit {
 
   checkParams() {
 
-    return !this.reservation.bookingFrom || !this.reservation.bookingTo || !this.capacity || !this.isLogin;
+    return !this.bookingFrom || !this.bookingTo || !this.capacity || !this.isLogin;
   }
 
   ngAfterViewInit() {
@@ -158,12 +167,10 @@ export class RoomsComponent implements OnInit {
   }
 
   submit() {
-    if(!$('#checkin_date').val() || !$('#checkout_date').val() || !this.capacity || !this.compareDate()) {
+    if(!this.bookingFrom || !this.bookingTo || !this.capacity || !this.compareDate()) {
       this.dialogService.showError("invalid params");
       return;
     }
-    this.reservation.bookingFrom = new Date($('#checkin_date').val());
-    this.reservation.bookingTo = new Date($('#checkout_date').val());
 
     this.loading.show();
     this.listRoom = [];
@@ -171,6 +178,6 @@ export class RoomsComponent implements OnInit {
   }
 
   compareDate() {
-    return new Date($('#checkin_date').val()).getTime() <= new Date($('#checkout_date').val()).getTime();
+    return new Date(this.bookingFrom).getTime() < new Date(this.bookingTo).getTime() && new Date(this.bookingFrom).getTime() >= new Date(new Date().toLocaleDateString()).getTime();
   }
 }

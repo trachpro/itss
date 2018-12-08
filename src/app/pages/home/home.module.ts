@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HomeRoutes } from './home.routes';
 import { CommonsModule } from '../../commons/commons.module';
 import { FormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     RouterModule.forChild(HomeRoutes),
     CommonsModule,
-    FormsModule
+    FormsModule,
+    BsDatepickerModule.forRoot()
   ],
   exports: [
   ]

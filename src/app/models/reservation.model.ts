@@ -44,8 +44,9 @@ export class ReservationModel {
     return this.getFormattedDate(this.bookingTo);
   }
 
-  private getFormattedDate(datetime: Date) {
-    return datetime.getFullYear() + "-" + datetime.getMonth() + "-" + datetime.getDate();
+  private getFormattedDate(date: Date) {
+    if(!date) return '';
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
   }
 
   public getTimeFormatCheckin() {

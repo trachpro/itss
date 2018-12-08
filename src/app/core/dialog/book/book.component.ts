@@ -4,6 +4,7 @@ import { LoadingService } from '../../util/loading.service';
 import { ReservationService } from '../../api/reservation.service';
 import { FormatService } from '../../util/format.service';
 import { StorageService } from '../../util/storage.service';
+import { ReservationModel } from '../../../models/reservation.model';
 
 @Component({
   selector: 'app-book',
@@ -23,7 +24,7 @@ export class BookComponent implements OnInit {
     private formatService: FormatService,
     private storage: StorageService
   ) {
-    this.reservation = this.data.reservation;
+    this.reservation = new ReservationModel(JSON.parse(JSON.stringify(this.data.reservation)));
     this.room = this.data.room? this.data.room: this.formatService.getRoomByRoomNo(this.reservation.roomNo);
     this.isStaff = this.storage.get('role') && this.storage.get('role') !== 'ROLE_CLIENT';
   }
@@ -36,8 +37,9 @@ export class BookComponent implements OnInit {
     this.reservationService.updateStatus(this.reservation.status, this.reservation.code).subscribe( res => {
       this.loading.hide();
       this.dialogRef.close({
-        update: 1,
-        message: res.message
+        status: 1,
+        message: res.message,
+        reservation: res.data
       })
     }, error => {
       this.loading.hide();
@@ -52,7 +54,8 @@ export class BookComponent implements OnInit {
       console.log("success: ", res);
       this.dialogRef.close({
         status: 1,
-        message: res.message
+        message: res.message,
+        reservation: res.data
       })
     }, error => {
       this.loading.hide();

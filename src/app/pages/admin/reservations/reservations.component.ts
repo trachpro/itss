@@ -67,6 +67,13 @@ export class ReservationsComponent implements OnInit {
     this.dialogService.showReservation({
       reservation: item,
       room: this.roomObj[item.roomNo]
+    }).subscribe((result) => {
+      if(result && result.status && result.message) {
+        this.dialogService.showSuccess(result.message);
+        Object.assign(item, new ReservationModel(result.reservation));
+      } else if(result && !result.status && result.message) {
+        this.dialogService.showError(result.message);
+      }
     })
   }
 }

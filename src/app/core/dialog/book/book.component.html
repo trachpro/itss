@@ -29,14 +29,14 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="name">Email</label>
-                  <input type="text" name="email" disabled [ngModel]="reservation.customerEmail" class="form-control"
+                  <input type="text" name="email" [disabled]="reservation.code || !isStaff" [ngModel]="reservation.customerEmail" class="form-control"
                     placeholder="First Name">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" name="name" [(ngModel)]="reservation.customerName"
+                  <input type="text" class="form-control" [disabled]="reservation.code" name="name" [(ngModel)]="reservation.customerName"
                     placeholder="Name">
                 </div>
               </div>
@@ -59,14 +59,14 @@
                     class="form-control" placeholder="YYYY/MM/DD">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6" *ngIf="reservation.code">
                 <div class="form-group">
                   <label for="check-in">Check-in Time:</label>
                   <input type="text" id="checkin_date_time" name="bookingFrom" disabled [value]="reservation.getTimeFormatCheckin()"
                     class="form-control" placeholder="YYYY/MM/DD">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6" *ngIf="reservation.code">
                 <div class="form-group">
                   <label for="check-out">Check-out time:</label>
                   <input type="text" id="checkout_date_time" name="bookingTo" disabled [value]="reservation.getTimeFormatCheckout()"
@@ -76,17 +76,18 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="check-in">Status:</label>
-                  <select class="form-control" name="status" [(ngModel)]="reservation.status">
+                  <select [disabled]="!isStaff" class="form-control" name="status" [(ngModel)]="reservation.status">
                     <option value="CANCELLED">Đã Hủy</option>
                     <option value="BOOKING">Đang Đặt</option>
-                    <option value="CHECK-IN">Hoàn Thành</option>
+                    <option value="CHECK-IN">Đã Check-in</option>
+                    <option value="FINISHED">Hoàn Thành</option>
                   </select>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="check-out">Total:</label>
-                  <input type="text" id="total" name="bookingTo" disabled [value]="reservation.total | currency"
+                  <input type="text" id="total" name="bookingTo" disabled [value]="reservation.total? reservation.total: reservation.getTotal() * room.price | currency"
                     class="form-control" placeholder="">
                 </div>
               </div>

@@ -28,6 +28,7 @@ export class RoomComponent implements OnInit {
     this.reservation.customerName = this.storage.get('name');
     this.reservation.customerEmail = this.storage.get('email');
     this.reservation.roomNo = this.room.roomNo;
+    this.reservation.status = "BOOKING";
   }
 
   ngAfterViewInit() {

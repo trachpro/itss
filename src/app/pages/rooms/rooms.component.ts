@@ -5,6 +5,7 @@ import { RoomModel } from '../../models/room.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ReservationModel } from '../../models/reservation.model';
 import { DialogService } from '../../core/dialog/dialog.service';
+import { StorageService } from '../../core/util/storage.service';
 declare var $: any;
 
 const rooms = [
@@ -88,14 +89,18 @@ export class RoomsComponent implements OnInit {
   reservation: ReservationModel;
   capacity: number;
   isAllow: boolean = false;
+  isLogin: boolean;
 
   constructor(
     private roomsService: RoomsService,
     private loading: LoadingService,
     private router: Router,
     private activateRoute: ActivatedRoute,
-    private dialogService: DialogService
-  ) { }
+    private dialogService: DialogService,
+    private storage: StorageService
+  ) {
+    this.isLogin = this.storage.get("accessToken");
+  }
 
   async ngOnInit() {
     this.loading.show();
@@ -144,7 +149,7 @@ export class RoomsComponent implements OnInit {
 
   checkParams() {
 
-    return !this.reservation.bookingFrom || !this.reservation.bookingTo || !this.capacity;
+    return !this.reservation.bookingFrom || !this.reservation.bookingTo || !this.capacity || !this.isLogin;
   }
 
   ngAfterViewInit() {

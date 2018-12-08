@@ -63,4 +63,9 @@ export class ReservationModel {
       return `${this.checkout.toLocaleDateString()} ${this.checkout.getHours()}:${this.checkout.getMinutes()}`
     }
   }
+
+  public getTotal() {
+
+    return (this.bookingTo.getTime() - this.bookingFrom.getTime()) /(1000*60*60*24);
+  }
 }

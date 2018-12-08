@@ -18,7 +18,7 @@ export class LoginService {
 
   login(params): Observable<any> {
 
-    return this.mainApi.post('staff/login', params);
+    return this.mainApi.post('login', params);
   }
 
   forgetPassword(params): Observable<any> {

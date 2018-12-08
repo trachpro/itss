@@ -28,8 +28,8 @@ export class ReservationModel {
 
   toApiObject() {
     return Object.assign({}, this, {
-      bookingFrom: this.getApiDate(this.bookingFrom),
-      bookingTo: this.getApiDate(this.bookingTo)
+      bookingFrom: this.getFormattedDate(this.bookingFrom),
+      bookingTo: this.getFormattedDate(this.bookingTo)
     })
   }
   getApiDate(date: Date) {
@@ -45,7 +45,7 @@ export class ReservationModel {
   }
 
   private getFormattedDate(datetime: Date) {
-    return datetime.getDate() + "-" + datetime.getMonth() + "-" + datetime.getFullYear();
+    return datetime.getFullYear() + "-" + datetime.getMonth() + "-" + datetime.getDate();
   }
 
   public getTimeFormatCheckin() {

@@ -16,6 +16,7 @@ export class BookComponent implements OnInit {
   room: any = {};
   reservation: any = {};
   isStaff: boolean;
+  errorMessage: string = "";
   constructor(
     private dialogRef: MatDialogRef<BookComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -44,6 +45,7 @@ export class BookComponent implements OnInit {
     }, error => {
       this.loading.hide();
       console.log("error: ", error);
+      this.errorMessage = "bad request";
     })
   }
 

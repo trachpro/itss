@@ -7,10 +7,7 @@ import { StaffsComponent } from './staffs/staffs.component';
 export const AdminRoutes: Routes = [
   {
     path: '',
-    component: AdminComponent,
-  }, {
-    path: 'chart',
-    component: ChartComponent
+    component: ChartComponent,
   }, {
     path: 'reservations',
     component: ReservationsComponent

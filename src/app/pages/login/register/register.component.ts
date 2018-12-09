@@ -51,5 +51,4 @@ export class RegisterComponent implements OnInit {
           this.loadingService.hide();
       })
   }
-
 }

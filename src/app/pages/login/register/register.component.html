@@ -35,7 +35,7 @@
         <div class="field-group">
           <span class="fa fa-user" aria-hidden="true"></span>
           <div class="wthree-field">
-            <input [(ngModel)]="fullname" name="fullname" id="fullname" type="text" value="" placeholder="Full Name"
+            <input [(ngModel)]="fullname" name="fullname" id="fullname" type="text" value="" placeholder="Full Name" 
               #name="ngModel" required maxlength="25" pattern="^[A-Za-z][a-zA-Z ]{0,25}$">
           </div>
         </div>
@@ -53,7 +53,7 @@
         <div class="field-group">
           <span class="fa fa-lock" aria-hidden="true"></span>
           <div class="wthree-field">
-            <input [(ngModel)]="password" name="password" id="password" type="Password" placeholder="Password"
+            <input [(ngModel)]="password" (keydown.space)="false;" name="password" id="password" type="Password" placeholder="Password"
               #Password="ngModel" required minlength="6">
           </div>
         </div>
@@ -71,7 +71,7 @@
         <div class="field-group">
           <span class="fa fa-lock" aria-hidden="true"></span>
           <div class="wthree-field">
-            <input ngModel name="confirmPassword" id="repassword" type="Password" appMatchingValidator="password"
+            <input ngModel name="confirmPassword" id="repassword" (keydown.space)="false;" type="Password" appMatchingValidator="password"
               #confirmPassword="ngModel" placeholder="Confirm password" required>
           </div>
         </div>

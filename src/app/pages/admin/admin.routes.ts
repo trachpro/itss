@@ -3,6 +3,7 @@ import { AdminComponent } from './admin.component'
 import { ChartComponent } from './chart/chart.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { StaffsComponent } from './staffs/staffs.component';
+import { ChangePasswordComponent } from './change-password/change-password.component'
 
 export const AdminRoutes: Routes = [
   {
@@ -14,5 +15,8 @@ export const AdminRoutes: Routes = [
   }, {
     path: 'staff',
     component: StaffsComponent
+  }, {
+    path: 'password',
+    component: ChangePasswordComponent
   }
 ];
